@@ -1,0 +1,478 @@
+import java.util.Scanner;
+
+class Bankone 
+{
+    private static String  bname1 = "Canara";
+    private static String ifsc1 = "CNRB00020099";
+    private static String baddress1 = "Karkala";
+    
+        
+    public void BDetails()
+    {
+        System.out.println();
+        System.out.println("The Details of the Bank is :- ");
+        System.out.println();
+        System.out.println("The Name of the Bank is :- "+ bname1);
+        System.out.println("The Address of the Bank is :- "+ baddress1);
+        System.out.println("The IFSC Code of the Bank is :- "+ ifsc1);
+        System.out.println();
+    }
+}
+
+class Banktwo 
+{
+    private static String  bname = "Corporation";
+    private static String ifsc = "CRP00020099";
+    private static String baddress = "Karkala";
+    
+        
+    public void BDetails()
+    {
+        System.out.println();
+        System.out.println("The Details of the Bank is :- ");
+        System.out.println();
+        System.out.println("The Name of the Bank is :- "+ bname);
+        System.out.println("The Address of the Bank is :- "+ baddress);
+        System.out.println("The IFSC Code of the Bank is :- "+ ifsc);
+        System.out.println();
+    }
+}
+
+class Account
+{
+    private String name;
+    private String caddress;
+    private long accno;
+    private double bal;
+    private int pin; 
+    
+    public void atmDeposit()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the amount to be deposited :-");
+        double amt = in.nextDouble();
+        System.out.println("An Amount of worth Rs."+ amt + " has been deposited into your account");
+        System.out.println();
+        System.out.println("Interested in checking the balance ?");
+        System.out.println("If Yes Please press Y or else press N");
+        char c = in.next().charAt(0);
+        if(c == 'Y' || c == 'y' )
+        {
+            bal = bal + amt ;            
+            System.out.println("The Balance is :- Rs."+ bal );
+        }
+        else
+        {
+            System.out.println("Thank you for making the transaction");
+        }
+        
+    }
+    
+    public void atmWithdraw(int pin)
+    {
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Please enter the pin for the furthure transaction :-");
+        int apin = sc.nextInt();
+        if(apin == pin)
+        {
+            System.out.println("Enter the amount :-");
+            double cash = sc.nextDouble();
+            if(cash <= bal)
+            {
+                bal = bal - cash;
+                System.out.println();
+                System.out.println("karrrr---kar--karrr");
+                System.out.println("Please collect your cash");
+                System.out.println();
+                System.out.println("Interested in checking the balance ?");
+                System.out.println("If Yes Please press Y or else press N");
+                char ch = sc.next().charAt(0);
+                if(ch == 'Y' || ch == 'y')
+                {
+                    System.out.println("The Balance is :- Rs."+ bal );
+                }
+                else
+                {
+                    System.out.println("Thank you for making the transaction");
+                }
+
+            }
+            else
+            {
+                System.out.println("Sunny No Money");
+            }
+        }
+        else
+        {
+            System.out.println("Incorrect Pin");
+        }
+    }
+    
+    public void setassign(String name, String caddress, long accno, double bal, int pin)
+    {
+        this.pin = pin;
+        this.name=name;
+        this.caddress = caddress;
+        this.accno = accno;
+        this.bal = bal;
+    }
+    
+    public String getna()
+    {
+        return name;
+    }
+    
+    public String getcaddress()
+    {
+        return caddress;
+    }
+    
+    public long getaccno()
+    {
+        return accno;
+    }
+    
+    public double getbal()
+    {
+        return bal;
+    }
+    
+    Account(String name, String caddress, long accno, double bal, int pin)
+    {
+        this.pin = pin;
+        this.name= name;
+        this.caddress = caddress;
+        this.accno = accno;
+        this.bal = bal;
+    }
+    
+    public void ADetails()
+    {
+        System.out.println("The Details of the Account holder is :- ");
+        System.out.println();
+        System.out.println("The Name of the Account holder is :- "+ name);
+        System.out.println("The Account number of the Account holder is :- "+accno);
+        System.out.println("The Address of the Account holder is :- "+ caddress);
+        System.out.println("The Balance of the Account holder is :- Rs."+ bal);
+        
+    }
+
+}
+
+class Main
+{
+    public static void main(String[] args)
+    {
+        char choice;
+        System.out.println();
+        System.out.println("===============Welcome=================");
+        System.out.println();
+        System.out.println("1. New Registration.  [Press 1]");
+        System.out.println("2. Login. [Press 2]");
+        System.out.println("3. Change Language. [Press 3]");
+        System.out.println("Enter you choice :-");
+        
+        Scanner b = new Scanner(System.in);
+        int z = b.nextInt();
+        if(z==1)
+        {
+            System.out.println("Please contact to our Bank for the Registration Process.");
+            System.out.println("Thank You");
+            System.out.println("==============================================================");
+        }
+        else if(z == 2)
+        {
+        Scanner a = new Scanner(System.in);
+        System.out.println("Enter you certified pin :-");
+        int ab = a.nextInt();
+        if(ab == 111 )
+        {
+            Bankone b1 = new Bankone();
+            b1.BDetails();
+            System.out.println("If the above details are correct please press y to continue");
+            Scanner m = new Scanner(System.in);
+            char n = m.next().charAt(0);
+            if (n== 'y' || n == 'Y')
+            {
+                Account a1 = new Account("Ksk", "Karla", 12354, 5000, 1234 );
+                do
+                {
+                    System.out.println();
+                    System.out.println("Bank Options :-");
+                    System.out.println();
+                    System.out.println("Available transactions :-");
+                    System.out.println();
+                    System.out.println("1. My Details");
+                    System.out.println("2. Deposite");
+                    System.out.println("3. Withdraw");
+                    System.out.println("4. Exit");
+                    System.out.println();
+                    Scanner c = new Scanner(System.in);
+                    System.out.println("Enter the required choice :-");
+                    choice = c.next().charAt(0);
+                    switch(choice)
+                    {
+                        case '1' :
+                            a1.ADetails();
+                            System.out.println("================================");
+                            break;
+                        case '2' :
+                            a1.atmDeposit();
+                            System.out.println("=================================");
+                            break;
+                        case '3' :
+                            a1.atmWithdraw(1234);
+                            System.out.println("=================================");
+                            break;
+                        case '4' :
+                            System.exit(0);
+                        default:
+                            System.out.println("Invalid Operation.");
+                            System.out.println("=================================");
+                        
+                    }
+                }
+            while(choice != 4);
+            }
+            else
+            {
+                System.exit(0);
+            }
+        }
+        else if(ab ==222 )
+        {
+            Banktwo b2 = new Banktwo();
+            b2.BDetails();
+            System.out.println("If the above details are correct please press y to continue");
+            Scanner m = new Scanner(System.in);
+            char o = m.next().charAt(0);
+            if (o== 'y' || o == 'Y')
+            {
+                Account a2 = new Account("K", "Manglore", 12354, 5000, 1234 );
+                do
+                {
+                    System.out.println();
+                    System.out.println("Bank Options :-");
+                    System.out.println();
+                    System.out.println("Available transactions :-");
+                    System.out.println();
+                    System.out.println("1. My Details");
+                    System.out.println("2. Deposite");
+                    System.out.println("3. Withdraw");
+                    System.out.println("4. Exit");
+                    System.out.println();
+                    Scanner c = new Scanner(System.in);
+                    System.out.println("Enter the required choice :-");
+                    choice = c.next().charAt(0);
+                    switch(choice)
+                    {
+                        case '1' :
+                            a2.ADetails();
+                            System.out.println("================================");
+                            break;
+                        case '2' :
+                            a2.atmDeposit();
+                            System.out.println("=================================");
+                            break;
+                        case '3' :
+                            a2.atmWithdraw(1234);
+                            System.out.println("=================================");
+                            break;
+                        case '4' :
+                            System.exit(0);
+                        default:
+                            System.out.println("Invalid Operation.");
+                            System.out.println("=================================");
+                    }
+                }
+                while(choice != 4);
+            }
+            else
+            {
+                System.exit(0);
+            }
+        }
+        else
+        {
+            System.out.println("Wrong Pin");
+        }
+            
+        }
+        else if(z == 3)
+        {
+            System.out.println();
+            System.out.println("Available Languages :-");
+            System.out.println();
+            System.out.println("1. English [Press 1] ");
+            System.out.println("2. Kannada [Press 2]");
+            Scanner langselect = new Scanner(System.in);
+            int ls = langselect.nextInt();
+            if(ls == 1)
+            {
+                System.out.println();
+                System.out.println("The language is already in English");
+                main(null);
+            }
+            else if(ls == 2)
+            {
+                char choice2;
+                System.out.println();
+        System.out.println("===============ಸ್ವಾಗತ=================");
+        System.out.println();
+        System.out.println("1. ಹೊಸ ನೋಂದಣಿ. [1 ಒತ್ತಿ]");
+        System.out.println("2. ಲಾಗಿನ್ [2 ಒತ್ತಿ]");
+        System.out.println("3. ಭಾಷೆ ಬದಲಿಸಿ. [3 ಒತ್ತಿರಿ]");
+        System.out.println();
+        System.out.println("ನಿಮ್ಮ ಆಯ್ಕೆಯನ್ನು ನಮೂದಿಸಿ:-");
+        
+        Scanner b9= new Scanner(System.in);
+        int zk = b9.nextInt();
+        if(zk==1)
+        {
+            System.out.println("ನೋಂದಣಿ ಪ್ರಕ್ರಿಯೆಗಾಗಿ ದಯವಿಟ್ಟು ನಮ್ಮ ಬ್ಯಾಂಕ್ ಅನ್ನು ಸಂಪರ್ಕಿಸಿ.");
+            System.out.println("ಧನ್ಯವಾದಗಳು");
+            System.out.println("==============================================================");
+        }
+        else if(zk == 2)
+        {
+                Scanner a = new Scanner(System.in);
+                System.out.println("ನಿಮ್ಮ ಪ್ರಮಾಣೀಕೃತ ಪಿನ್ ನಮೂದಿಸಿ :-");
+                int ab = a.nextInt();
+                if(ab == 111 )
+                {
+                    Bankone b1 = new Bankone();
+                    b1.BDetails();
+                    System.out.println("ಮೇಲಿನ ವಿವರಗಳು ಸರಿಯಾಗಿದ್ದರೆ ದಯವಿಟ್ಟು ಮುಂದುವರಿಸಲು y ಒತ್ತಿರಿ");
+                    Scanner m = new Scanner(System.in);
+                    char n = m.next().charAt(0);
+                    if (n== 'y' || n == 'Y')
+                    {
+                        Account a1 = new Account("Ksk", "Karla", 12354, 5000, 1234 );
+                        do
+                        {
+                            System.out.println();
+                            System.out.println("ಬ್ಯಾಂಕ್ ಆಯ್ಕೆಗಳು :-");
+                            System.out.println();
+                            System.out.println("ಲಭ್ಯವಿರುವ ವಹಿವಾಟುಗಳು :-");
+                            System.out.println();
+                            System.out.println("1. ನನ್ನ ವಿವರಗಳು");
+                            System.out.println("2. ಠೇವಣಿ");
+                            System.out.println("3. ಹಣವನ್ನು ತೆಗೆ");
+                            System.out.println("4. ನಿರ್ಗಮಿಸಿ");
+                            System.out.println();
+                            Scanner c = new Scanner(System.in);
+                            System.out.println("ಅಗತ್ಯವಿರುವ ಆಯ್ಕೆಯನ್ನು ನಮೂದಿಸಿ:-");
+                            choice2 = c.next().charAt(0);
+                            switch(choice2)
+                            {
+                                case '1' :
+                                    a1.ADetails();
+                                    System.out.println("================================");
+                                    break;
+                                case '2' :
+                                    a1.atmDeposit();
+                                    System.out.println("=================================");
+                                    break;
+                                case '3' :
+                                    a1.atmWithdraw(1234);
+                                    System.out.println("=================================");
+                                    break;
+                                case '4' :
+                                    System.exit(0);
+                                default:
+                                    System.out.println("ಅಮಾನ್ಯ ಕಾರ್ಯಾಚರಣೆ.");
+                                    System.out.println("=================================");
+                            }
+                            
+                        }
+            while(choice2 != 4);
+                    }
+                    else
+                    {
+                        System.exit(0);
+                    }
+                }
+        else if(ab ==222 )
+        {
+            Banktwo b2 = new Banktwo();
+            b2.BDetails();
+            System.out.println("ಮೇಲಿನ ವಿವರಗಳು ಸರಿಯಾಗಿದ್ದರೆ ದಯವಿಟ್ಟು ಮುಂದುವರಿಸಲು y ಒತ್ತಿರಿ");
+            Scanner m = new Scanner(System.in);
+            char o = m.next().charAt(0);
+            if (o== 'y' || o == 'Y')
+            {
+                Account a2 = new Account("K", "Manglore", 12354, 5000, 1234 );
+                do
+                {
+                            System.out.println();
+                            System.out.println("ಬ್ಯಾಂಕ್ ಆಯ್ಕೆಗಳು :-");
+                            System.out.println();
+                            System.out.println("ಲಭ್ಯವಿರುವ ವಹಿವಾಟುಗಳು :-");
+                            System.out.println();
+                            System.out.println("1. ನನ್ನ ವಿವರಗಳು");
+                            System.out.println("2. ಠೇವಣಿ");
+                            System.out.println("3. ಹಣವನ್ನು ತೆಗೆ");
+                            System.out.println("4. ನಿರ್ಗಮಿಸಿ");
+                            System.out.println();
+                    Scanner c = new Scanner(System.in);
+                   System.out.println("ಅಗತ್ಯವಿರುವ ಆಯ್ಕೆಯನ್ನು ನಮೂದಿಸಿ:-");
+
+                    choice2 = c.next().charAt(0);
+                    switch(choice2)
+                    {
+                        case '1' :
+                            a2.ADetails();
+                            System.out.println("================================");
+                            break;
+                        case '2' :
+                            a2.atmDeposit();
+                            System.out.println("=================================");
+                            break;
+                        case '3' :
+                            a2.atmWithdraw(1234);
+                            System.out.println("=================================");
+                            break;
+                        case '4' :
+                            System.exit(0);
+                        default:
+                            System.out.println("ಅಮಾನ್ಯ ಕಾರ್ಯಾಚರಣೆ.");
+                            System.out.println("=================================");
+                    }
+                }
+                while(choice2 != 4);
+            }
+            else
+            {
+                System.exit(0);
+            }
+        }
+        else
+        {
+            System.out.println("ನೀವು ರಾಂಗ್ ಪಿನ್ ನಮೂದಿಸಿದ್ದೀರಿ");
+        }
+            
+        }
+        }
+    }
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
