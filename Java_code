@@ -53,12 +53,13 @@ class Account
         double amt = in.nextDouble();
         System.out.println("An Amount of worth Rs."+ amt + " has been deposited into your account");
         System.out.println();
+        bal = bal + amt ;
         System.out.println("Interested in checking the balance ?");
         System.out.println("If Yes Please press Y or else press N");
         char c = in.next().charAt(0);
         if(c == 'Y' || c == 'y' )
         {
-            bal = bal + amt ;            
+                        
             System.out.println("The Balance is :- Rs."+ bal );
         }
         else
@@ -77,7 +78,11 @@ class Account
         {
             System.out.println("Enter the amount :-");
             double cash = sc.nextDouble();
-            if(cash <= bal)
+            if(cash == bal)
+            {
+                System.out.println("Enter the amount less than balance amount");
+            }
+            else if(cash <= bal)
             {
                 bal = bal - cash;
                 System.out.println();
@@ -159,6 +164,68 @@ class Account
 
 }
 
+class Nreg
+{
+    public void nreg()
+    {
+        String Bname ;
+        String name ;
+        int age;
+        long adrno ;
+        String address ;
+        long number;
+    
+        Scanner a = new Scanner(System.in);
+    
+        System.out.println("Please Enter the name of the bank in which the acoount to be created :-");
+        Bname = a.next();
+        System.out.println("Enter the account holder name :-");
+        name = a.next();
+        System.out.println("Enter the age :-");
+        age = a.nextInt();
+        System.out.println("Enter the aadhar number :-");
+        adrno = a.nextLong();
+        System.out.println("Enter the address :- ");
+        address = a.next();
+        System.out.println("Enter the mobile number :-");
+        number = a.nextLong();
+        System.out.println();
+        System.out.println("Clarify the deatils :-");
+        System.out.println();
+        System.out.println("Bank Name :-"+ Bname);
+        System.out.println("Account Holder Name :-"+ name);
+        System.out.println("Age :-"+ age);
+        System.out.println("Aadhar Number :-"+ adrno);
+        System.out.println("Address :-"+ address);
+        System.out.println("Mobile Number :-"+ number);
+        System.out.println();
+        System.out.println("If the provided details are correct, Press 1 or else Press 2");
+        int b = a.nextInt();
+        if (b == 1)
+        {
+            System.out.println();
+            System.out.println("Types of bank account which are available are :- ");
+            System.out.println();
+            System.out.println("1. Curruent Account [Press 1]");
+            System.out.println("2. Savings Acoount [Press 2]");
+            System.out.println("3. Fixed Deposite Account [Press 3]");
+            System.out.println("4. Recurring Deposit Account [Press 4]");
+            System.out.println();
+            System.out.println("Enter the required option");
+            int c = a.nextInt();
+        }
+        else
+        {
+            nreg();
+        }
+        System.out.println();
+        System.out.println("Thank you for registration. ");
+        System.out.println("Your Account will be created within two working days. ");
+        System.out.println("You will be informed when the account have been created.");
+    }
+    
+}
+
 class Main
 {
     public static void main(String[] args)
@@ -176,9 +243,11 @@ class Main
         int z = b.nextInt();
         if(z==1)
         {
-            System.out.println("Please contact to our Bank for the Registration Process.");
-            System.out.println("Thank You");
+            Nreg n = new Nreg();
+            n.nreg();
+            System.out.println();
             System.out.println("==============================================================");
+            main(null);
         }
         else if(z == 2)
         {
@@ -456,6 +525,7 @@ class Main
     }
 }
 }
+
 
 
 
